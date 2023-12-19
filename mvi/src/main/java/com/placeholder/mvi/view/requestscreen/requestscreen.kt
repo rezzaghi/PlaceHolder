@@ -12,12 +12,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 
 @Composable
-fun RequestScreen(){
-    // TODO: use Hilt
-    val viewModel: RequestViewModel = viewModel()
+fun RequestScreen(viewModel: RequestViewModel = hiltViewModel()) {
     val state = viewModel.state.collectAsState().value
     Column(
         verticalArrangement = Arrangement.Center,
