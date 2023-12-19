@@ -2,8 +2,9 @@ package com.placeholder.mvi.view.requestscreen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.placeholder.mvi.data.repository.PlaceHolderRepositoryImpl
+import com.placeholder.mvi.data.repository.PlaceHolderRepository
 import com.placeholder.mvi.view.states.TodoState
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -11,10 +12,12 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class RequestViewModel: ViewModel() {
-    //TODO: use Hilt
-    private val repository = PlaceHolderRepositoryImpl()
+@HiltViewModel
+class RequestViewModel @Inject constructor(
+    private val repository: PlaceHolderRepository
+) : ViewModel() {
     private val _state = MutableStateFlow(TodoState())
     val state: StateFlow<TodoState> = _state.asStateFlow()
 
