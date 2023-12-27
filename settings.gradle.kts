@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "PlaceHolder"
 include(":mvi")
+include(":mvvm")
